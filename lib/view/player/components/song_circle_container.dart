@@ -9,7 +9,8 @@ import '../../../res/app_svg.dart';
 import '../../common_widget/soft_button.dart';
 
 class SongCircleContainer extends StatelessWidget {
-  const SongCircleContainer({super.key, required this.file, required this.image});
+  const SongCircleContainer(
+      {super.key, required this.file, required this.image});
   final String image;
   final AudioFile file;
 
@@ -106,7 +107,10 @@ class SongCircleContainer extends StatelessWidget {
                       child: Center(
                         child: SvgPicture.asset(
                           state.isPlaying ? AppSvg.pause : AppSvg.play,
-                          color: Colors.white,
+                          colorFilter: const ColorFilter.mode(
+                            Colors.white,
+                            BlendMode.srcIn,
+                          ),
                           width: 20,
                         ),
                       ),

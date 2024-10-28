@@ -71,7 +71,7 @@ class BoardingPage extends StatelessWidget {
                     topLeft: Radius.circular(200),
                     topRight: Radius.circular(200),
                   ),
-                  color: Colors.grey.withOpacity(.1)),
+                  color: Colors.grey.withValues(alpha: .1)),
             ),
             // Image.asset(AppIcons.splashIcons),
           ],
