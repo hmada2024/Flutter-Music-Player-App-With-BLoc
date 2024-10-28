@@ -49,7 +49,7 @@ class BoardingPage extends StatelessWidget {
                       decoration: BoxDecoration(
                         color: state.index == e
                             ? lightBlueShade
-                            : Colors.grey.withOpacity(.6),
+                            : Colors.grey.withValues(alpha: .6),
                         shape: BoxShape.circle,
                       ),
                     ))

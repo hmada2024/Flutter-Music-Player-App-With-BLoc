@@ -12,7 +12,12 @@ import '../../../bloc/player_bloc/player_bloc.dart';
 import '../../../res/app_svg.dart';
 
 class SongWidget extends StatelessWidget {
-  const SongWidget({super.key, required this.image, required this.name, required this.length, required this.file});
+  const SongWidget(
+      {super.key,
+      required this.image,
+      required this.name,
+      required this.length,
+      required this.file});
   final String image;
   final String name;
   final String length;
@@ -56,95 +61,118 @@ class SongWidget extends StatelessWidget {
         const Spacer(),
         GestureDetector(
           onTap: () {
-            Utils.showBottomSheet(context: context,
-                isDismissible: true,
-                widget: Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(30),
-                color: backgroundColor,
+            Utils.showBottomSheet(
+              context: context,
+              isDismissible: true,
+              widget: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(30),
+                  color: backgroundColor,
+                ),
+                height: 120,
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pop(context);
+                        context.read<PlayerBloc>().add(OnPlayEvent(file: file));
+                        // Utils.go(
+                        //     context: context,
+                        //     screen: Player(
+                        //       file: file,
+                        //       image: image,
+                        //     ));
+                      },
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          CircularSoftButton(
+                            radius: 25,
+                            padding: 0,
+                            icon: Center(
+                                child: SvgPicture.asset(
+                              AppSvg.play,
+                              width: 20,
+                              colorFilter: ColorFilter.mode(
+                                blueBackground,
+                                BlendMode.srcIn,
+                              ),
+                            )),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          const Text('Play')
+                        ],
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pop(context);
+                        context
+                            .read<HomeBloc>()
+                            .add(AddToFavouriteEvent(file: file));
+                      },
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          CircularSoftButton(
+                            radius: 25,
+                            padding: 0,
+                            icon: Center(
+                                child: Icon(
+                              Icons.favorite,
+                              color: blueBackground,
+                            )),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          const Text('Add')
+                        ],
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pop(context);
+                        context.read<HomeBloc>().add(AddToAlbum(file: file));
+                      },
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          CircularSoftButton(
+                            radius: 25,
+                            padding: 0,
+                            icon: Center(
+                                child: Icon(
+                              Icons.album,
+                              color: blueBackground,
+                            )),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          const Text('Album')
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
-              height: 120,
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.pop(context);
-                          context
-                              .read<PlayerBloc>()
-                              .add(OnPlayEvent(file: file));
-                          // Utils.go(
-                          //     context: context,
-                          //     screen: Player(
-                          //       file: file,
-                          //       image: image,
-                          //     ));
-                        },
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            CircularSoftButton(
-                              radius: 25,
-                              padding: 0,
-                              icon: Center(child: SvgPicture.asset(AppSvg.play,width: 20,color: blueBackground,)),
-                            ),
-                            const SizedBox(height: 10,),
-                            const Text('Play')
-                          ],
-                        ),
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.pop(context);
-                          context.read<HomeBloc>().add(AddToFavouriteEvent(file: file));
-
-                        },
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            CircularSoftButton(
-                              radius: 25,
-                              padding: 0,
-                              icon: Center(child: Icon(Icons.favorite,color: blueBackground,)),
-                            ),
-                            const SizedBox(height: 10,),
-                            const Text('Add')
-                          ],
-                        ),
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.pop(context);
-                          context.read<HomeBloc>().add(AddToAlbum(file: file));
-                        },
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            CircularSoftButton(
-                              radius: 25,
-                              padding: 0,
-                              icon: Center(child: Icon(Icons.album,color: blueBackground,)),
-                            ),
-                            const SizedBox(height: 10,),
-                            const Text('Album')
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-            ),
             );
           },
           child: Padding(
             padding: const EdgeInsets.only(left: 10),
             child: RotatedBox(
                 quarterTurns: 1,
-                child: SvgPicture.asset(
-                  AppSvg.more,
-                  height: 16,
-                  color: Colors.grey,
-                )),
+                child: SvgPicture.asset(AppSvg.more,
+                    height: 16,
+                    colorFilter: const ColorFilter.mode(
+                      Colors.grey,
+                      BlendMode.srcIn,
+                    ))),
           ),
         )
       ],

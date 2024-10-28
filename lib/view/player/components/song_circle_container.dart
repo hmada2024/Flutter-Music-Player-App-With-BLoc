@@ -70,7 +70,7 @@ class SongCircleContainer extends StatelessWidget {
                     builder: (context, state) {
                       return CircularProgressIndicator(
                         color: blueBackground,
-                        backgroundColor: Colors.grey.withOpacity(.1),
+                        backgroundColor: Colors.grey.withValues(alpha: .1),
                         value: state.progress,
                         strokeWidth: 7,
                         strokeCap: StrokeCap.round,

@@ -81,7 +81,7 @@ class HomeBottomPlayer extends StatelessWidget {
                                     child: LinearProgressIndicator(
                                       borderRadius: BorderRadius.circular(10),
                                       backgroundColor:
-                                      Colors.grey.withOpacity(.1),
+                                          Colors.grey.withValues(alpha: .1),
                                       color: blueBackground,
                                       value: state.progress,
                                     ),
@@ -89,7 +89,9 @@ class HomeBottomPlayer extends StatelessWidget {
                                 ],
                               ),
                             ),
-                            const SizedBox(width: 20,),
+                            const SizedBox(
+                              width: 20,
+                            ),
                             Row(
                               children: [
                                 GestureDetector(
@@ -120,13 +122,16 @@ class HomeBottomPlayer extends StatelessWidget {
                                     backgroundColor: blueBackground,
                                     child: Center(
                                       child:
-                                      BlocBuilder<PlayerBloc, PlayerState>(
+                                          BlocBuilder<PlayerBloc, PlayerState>(
                                         builder: (context, state) {
                                           return SvgPicture.asset(
                                             state.isPlaying
                                                 ? AppSvg.pause
                                                 : AppSvg.play,
-                                            color: Colors.white,
+                                            colorFilter: const ColorFilter.mode(
+                                              Colors.white,
+                                              BlendMode.srcIn,
+                                            ),
                                             width: 15,
                                           );
                                         },
