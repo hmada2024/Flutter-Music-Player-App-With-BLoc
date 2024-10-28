@@ -59,7 +59,7 @@ class SongCircleContainer extends StatelessWidget {
           Container(
             height: 270,
             width: 270,
-            padding: EdgeInsets.all(10),
+            padding: const EdgeInsets.all(10),
             child: Transform.flip(
               flipX: true,
               child: Transform.rotate(

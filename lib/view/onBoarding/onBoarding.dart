@@ -81,7 +81,7 @@ class OnBoarding extends StatelessWidget {
                 onTap: () => context
                     .read<BoardingBLoc>()
                     .add(OnSkipTapEvent(context: context)),
-                child: Text(
+                child: const Text(
                   'Skip',
                 ),
               ))

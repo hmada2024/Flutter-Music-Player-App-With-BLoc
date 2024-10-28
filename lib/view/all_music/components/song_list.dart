@@ -56,7 +56,7 @@ class SongList extends StatelessWidget {
                         },
                         child: Container(
                           alignment: Alignment.center,
-                          padding: EdgeInsets.symmetric(
+                          padding: const EdgeInsets.symmetric(
                               horizontal: 10, vertical: 5),
                           decoration: BoxDecoration(
                             color: backgroundColor,
@@ -64,9 +64,9 @@ class SongList extends StatelessWidget {
                             boxShadow: [
                               BoxShadow(
                                   color: shadowColor,
-                                  offset: Offset(8, 6),
+                                  offset: const Offset(8, 6),
                                   blurRadius: 12),
-                              BoxShadow(
+                              const BoxShadow(
                                   color: Colors.white,
                                   offset: Offset(-8, -6),
                                   blurRadius: 12),

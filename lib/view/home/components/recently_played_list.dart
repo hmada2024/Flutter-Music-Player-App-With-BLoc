@@ -71,7 +71,7 @@ class RecentlyPlayedList extends StatelessWidget {
                             child: Container(
                               height: 120,
                               width: 130,
-                              margin: EdgeInsets.only(right: 20),
+                              margin: const EdgeInsets.only(right: 20),
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(10),
                                   image: DecorationImage(
@@ -94,7 +94,7 @@ class RecentlyPlayedList extends StatelessWidget {
                                               borderRadius:
                                                   BorderRadius.circular(10),
                                               color: Colors.black26),
-                                          padding: EdgeInsets.symmetric(
+                                          padding: const EdgeInsets.symmetric(
                                               horizontal: 6, vertical: 3),
                                           child: Row(
                                             crossAxisAlignment:
@@ -107,10 +107,9 @@ class RecentlyPlayedList extends StatelessWidget {
                                                     CrossAxisAlignment.start,
                                                 children: [
                                                   Text(
-                                                    state.favouriteSongs[index]
+                                                    '${state.favouriteSongs[index]
                                                             .name!
-                                                            .substring(0, 8) +
-                                                        '...',
+                                                            .substring(0, 8)}...',
                                                     style: const TextStyle(
                                                         fontWeight:
                                                             FontWeight.bold,
@@ -122,14 +121,14 @@ class RecentlyPlayedList extends StatelessWidget {
                                                     state.favouriteSongs[index]
                                                         .length
                                                         .toString(),
-                                                    style: TextStyle(
+                                                    style: const TextStyle(
                                                         color: Colors.white70,
                                                         fontSize: 10,
                                                         height: 0),
                                                   )
                                                 ],
                                               ),
-                                              Spacer(),
+                                              const Spacer(),
                                               CircleAvatar(
                                                 backgroundColor: Colors.white,
                                                 radius: 10,
@@ -192,11 +191,11 @@ class RecentlyPlayedList extends StatelessWidget {
                             child: Container(
                               height: 120,
                               width: 130,
-                              margin: EdgeInsets.only(right: 20),
+                              margin: const EdgeInsets.only(right: 20),
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(10),
                                   color: Colors.white),
-                              child: Stack(
+                              child: const Stack(
                                 children: [],
                               ),
                             ),
@@ -217,7 +216,7 @@ class RecentlyPlayedList extends StatelessWidget {
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(10),
                                         color: Colors.black26),
-                                    padding: EdgeInsets.symmetric(
+                                    padding: const EdgeInsets.symmetric(
                                         horizontal: 6, vertical: 3),
                                     child: Row(
                                       crossAxisAlignment:
@@ -240,7 +239,7 @@ class RecentlyPlayedList extends StatelessWidget {
                                                       BorderRadius.circular(
                                                           20)),
                                             ),
-                                            SizedBox(
+                                            const SizedBox(
                                               height: 5,
                                             ),
                                             Container(
@@ -254,7 +253,7 @@ class RecentlyPlayedList extends StatelessWidget {
                                             ),
                                           ],
                                         ),
-                                        Spacer(),
+                                        const Spacer(),
                                         CircleAvatar(
                                           backgroundColor: Colors.white,
                                           radius: 10,

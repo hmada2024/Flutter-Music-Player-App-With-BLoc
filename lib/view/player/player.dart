@@ -35,7 +35,7 @@ class Player extends StatelessWidget {
                   CustomAppBar(
                     preIcon: InkWell(
                       onTap: () => Navigator.pop(context),
-                      child: Icon(
+                      child: const Icon(
                         Icons.keyboard_arrow_down_outlined,
                         color: Colors.black,
                       ),
@@ -46,7 +46,7 @@ class Player extends StatelessWidget {
                     ),
                   ),
                   SongTitle(file: file,),
-                  Spacer(),
+                  const Spacer(),
                   SongControllers(file: file,),
                   const SizedBox(height: 50,),
                   const SongBottomContainer(),

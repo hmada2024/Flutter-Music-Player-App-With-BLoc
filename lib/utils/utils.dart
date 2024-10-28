@@ -66,11 +66,6 @@ class Utils{
       return true;
     }
     else{
-      Map<Permission, PermissionStatus> statuses = await [
-        Permission.storage,
-        Permission.audio,
-        Permission.manageExternalStorage,
-      ].request();
       var temp1 = await Permission.audio.status;
       if(temp1.isGranted){
         return true;

@@ -51,7 +51,7 @@ class SongListFolder extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            Expanded(child: SongList())
+            const Expanded(child: SongList())
           ],
         )),
       ),

@@ -89,7 +89,7 @@ class HomeBottomPlayer extends StatelessWidget {
                                 ],
                               ),
                             ),
-                            SizedBox(width: 20,),
+                            const SizedBox(width: 20,),
                             Row(
                               children: [
                                 GestureDetector(

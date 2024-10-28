@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:music/db_helper/db_helper.dart';
@@ -80,47 +81,59 @@ class PlayerBloc extends Bloc<PlayerEvent, PlayerState> {
   }
 
   Future<void> _onTapFavouriteEvent(
-      OnTapFavouriteEvent event, Emitter<PlayerState> emit) async {
-    final alreadyExist =
-        await dbHelper.isFavoriteExists(event.file.name.toString());
+    OnTapFavouriteEvent event, Emitter<PlayerState> emit) async {
+  try {
+    // التحقق إذا كان الملف موجوداً بالفعل في قائمة المفضلة
+    final alreadyExist = await dbHelper.isFavoriteExists(event.file.name.toString());
+
+    // إذا كان الملف موجوداً
     if (alreadyExist) {
+      // التحقق إذا كانت الواجهة لا تزال متصلة بالشجرة لتجنب الأخطاء
+      if (!event.context.mounted) return; // التأكد من صلاحية الـcontext
+
+      // إظهار مربع الحوار التحذيري
       showDialog(
         context: event.context,
         builder: (context) {
           return AlertDialog(
             backgroundColor: Colors.white,
-            title: Text(
-              'Warning',
+            title: const Text(
+              'تحذير',
               style: TextStyle(
                   color: Colors.black,
                   fontWeight: FontWeight.bold,
                   fontSize: 12),
             ),
-            content: Text(
-              'This soong is already in favourite list, are you sure to delete it',
+            content: const Text(
+              'هذا الملف موجود بالفعل في قائمة المفضلة، هل تريد حذفه؟',
               style: TextStyle(
                 color: Colors.black,
                 fontSize: 10,
               ),
             ),
             actions: [
+              // زر الإلغاء
               InkWell(
                   onTap: () => Navigator.pop(context),
-                  child: Text(
-                    'Cancle',
+                  child: const Text(
+                    'إلغاء',
                     style: TextStyle(fontSize: 12, color: Colors.black),
                   )),
-              SizedBox(
+              const SizedBox(
                 width: 10,
               ),
+              // زر التأكيد لحذف الملف
               InkWell(
                 onTap: () async {
+                  // حذف الملف من قاعدة البيانات
                   await dbHelper.delete(event.file.name.toString());
-                  Navigator.pop(context);
+                  // التحقق من صلاحية الـcontext قبل إغلاق مربع الحوار
+                  if (event.context.mounted) Navigator.pop(context);
+                  // تحديث الحالة لتظهر أن الملف لم يعد في المفضلة
                   emit(state.copyWith(isFavourite: false));
                 },
-                child: Text(
-                  'ok',
+                child: const Text(
+                  'موافق',
                   style: TextStyle(
                       color: Colors.red,
                       fontWeight: FontWeight.bold,
@@ -132,11 +145,20 @@ class PlayerBloc extends Bloc<PlayerEvent, PlayerState> {
         },
       );
     } else {
+      // إذا لم يكن الملف موجوداً في قائمة المفضلة، يتم إضافته
       await dbHelper.insert(event.file);
+      // تحديث الحالة لتظهر أن الملف تم إضافته إلى المفضلة
       emit(state.copyWith(isFavourite: true));
-
+    }
+  } catch (e) {
+    // التعامل مع الأخطاء في حالة وجود مشكلة في العملية
+    if (kDebugMode) {
+      print("حدث خطأ في التعامل مع المفضلة: $e");
     }
   }
+}
+
+
 
   void _onTapForwardEvent(OnTapForwardEvent event, Emitter<PlayerState> emit) {
     if (player.position.inSeconds < player.duration!.inSeconds - 10) {
