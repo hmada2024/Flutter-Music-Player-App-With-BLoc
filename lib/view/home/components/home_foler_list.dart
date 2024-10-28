@@ -13,12 +13,14 @@ import '../../all_music/all_music.dart';
 
 class HomeFolderList extends StatelessWidget {
   const HomeFolderList({super.key, this.state});
-  final state;
+  final dynamic  state;
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const SizedBox(height: 20,),
+        const SizedBox(
+          height: 20,
+        ),
         Row(
           children: [
             const Text(
@@ -37,7 +39,8 @@ class HomeFolderList extends StatelessWidget {
               },
               child: const Text(
                 'See all',
-                style: TextStyle(color: Colors.grey, fontWeight: FontWeight.bold),
+                style:
+                    TextStyle(color: Colors.grey, fontWeight: FontWeight.bold),
               ),
             )
           ],
@@ -56,19 +59,16 @@ class HomeFolderList extends StatelessWidget {
               desktopScreenCrossAxisCount: 4,
               builder: (context, index) {
                 return Padding(
-                  padding: !ResponsiveLayout.isLargeMobile(
-                      context) ?
-                  const EdgeInsets.only(
-                      top: 20, right: 20, left: 20) :
-                  const EdgeInsets.only(top: 20)
-                  ,
+                  padding: !ResponsiveLayout.isLargeMobile(context)
+                      ? const EdgeInsets.only(top: 20, right: 20, left: 20)
+                      : const EdgeInsets.only(top: 20),
                   child: GestureDetector(
                     onTap: () async {
-                      context.read<AlbumBloc>().add(
-                          FolderTapEvent(path: state.folders[index]['path'].toString(),
-                              folderName: state.folders[index]['name'].toString())
-                      );
-                      Utils.go(context: context, screen: const SongListFolder());
+                      context.read<AlbumBloc>().add(FolderTapEvent(
+                          path: state.folders[index]['path'].toString(),
+                          folderName: state.folders[index]['name'].toString()));
+                      Utils.go(
+                          context: context, screen: const SongListFolder());
                     },
                     child: Container(
                       alignment: Alignment.center,
@@ -76,8 +76,7 @@ class HomeFolderList extends StatelessWidget {
                           horizontal: 10, vertical: 5),
                       decoration: BoxDecoration(
                         color: backgroundColor,
-                        borderRadius: BorderRadius.circular(
-                            5),
+                        borderRadius: BorderRadius.circular(5),
                         boxShadow: [
                           BoxShadow(
                               color: shadowColor,
@@ -97,7 +96,9 @@ class HomeFolderList extends StatelessWidget {
                             color: Colors.orangeAccent,
                             size: 30,
                           ),
-                          const SizedBox(width: 10,),
+                          const SizedBox(
+                            width: 10,
+                          ),
                           Expanded(
                             flex: 2,
                             child: Column(
@@ -105,8 +106,7 @@ class HomeFolderList extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  state
-                                      .folders[index]['name'].toString(),
+                                  state.folders[index]['name'].toString(),
                                   overflow: TextOverflow.ellipsis,
                                   style: const TextStyle(
                                       color: Colors.black87,
@@ -125,12 +125,16 @@ class HomeFolderList extends StatelessWidget {
                           ),
                           const Spacer(),
                           RotatedBox(
-                              quarterTurns: 1,
-                              child: SvgPicture.asset(
-                                AppSvg.more,
-                                height: 16,
-                                color: Colors.grey,
-                              ))
+                            quarterTurns: 1,
+                            child: SvgPicture.asset(
+                              AppSvg.more,
+                              height: 16,
+                              colorFilter: const ColorFilter.mode(
+                                Colors.grey,
+                                BlendMode.srcIn,
+                              ),
+                            ),
+                          )
                         ],
                       ),
                     ),
