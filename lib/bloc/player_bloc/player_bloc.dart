@@ -89,14 +89,14 @@ class PlayerBloc extends Bloc<PlayerEvent, PlayerState> {
         builder: (context) {
           return AlertDialog(
             backgroundColor: Colors.white,
-            title: Text(
+            title: const Text(
               'Warning',
               style: TextStyle(
                   color: Colors.black,
                   fontWeight: FontWeight.bold,
                   fontSize: 12),
             ),
-            content: Text(
+            content: const Text(
               'This soong is already in favourite list, are you sure to delete it',
               style: TextStyle(
                 color: Colors.black,
@@ -106,11 +106,11 @@ class PlayerBloc extends Bloc<PlayerEvent, PlayerState> {
             actions: [
               InkWell(
                   onTap: () => Navigator.pop(context),
-                  child: Text(
+                  child: const Text(
                     'Cancle',
                     style: TextStyle(fontSize: 12, color: Colors.black),
                   )),
-              SizedBox(
+              const SizedBox(
                 width: 10,
               ),
               InkWell(
@@ -119,7 +119,7 @@ class PlayerBloc extends Bloc<PlayerEvent, PlayerState> {
                   Navigator.pop(context);
                   emit(state.copyWith(isFavourite: false));
                 },
-                child: Text(
+                child: const Text(
                   'ok',
                   style: TextStyle(
                       color: Colors.red,

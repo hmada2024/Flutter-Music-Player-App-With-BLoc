@@ -33,7 +33,7 @@ class _HomeViewState extends State<HomeView> {
     return Scaffold(
         body: SafeArea(
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Stack(
           fit: StackFit.expand,
           children: [

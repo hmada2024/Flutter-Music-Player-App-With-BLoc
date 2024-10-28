@@ -31,16 +31,16 @@ class FolderList extends StatelessWidget {
             child: Container(
               height: 90,
               width: 90,
-              margin: EdgeInsets.only(top: 20,left: 10,right: 10),
+              margin: const EdgeInsets.only(top: 20,left: 10,right: 10),
               decoration: BoxDecoration(
                 color: backgroundColor,
                 borderRadius: BorderRadius.circular(10),
                 boxShadow: [
                   BoxShadow(
                       color: shadowColor,
-                      offset: Offset(8, 6),
+                      offset: const Offset(8, 6),
                       blurRadius: 12),
-                  BoxShadow(
+                  const BoxShadow(
                       color: Colors.white,
                       offset: Offset(-8, -6),
                       blurRadius: 12),
@@ -50,18 +50,18 @@ class FolderList extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Icon(
+                  const Icon(
                     Icons.folder_rounded,
                     size: 40,
                     color: Colors.orangeAccent,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 5,
                   ),
                   Text(
                     state.folders[index]['name'].toString(),
                     overflow: TextOverflow.ellipsis,
-                    style: TextStyle(fontSize: 12),
+                    style: const TextStyle(fontSize: 12),
                   )
                 ],
               ),

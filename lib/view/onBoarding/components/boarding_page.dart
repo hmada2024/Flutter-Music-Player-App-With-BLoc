@@ -45,7 +45,7 @@ class BoardingPage extends StatelessWidget {
                 ...[0, 1, 2].map((e) => Container(
                       height: state.index == e ? 10 : 8,
                       width: state.index == e ? 10 : 8,
-                      margin: EdgeInsets.symmetric(horizontal: 2),
+                      margin: const EdgeInsets.symmetric(horizontal: 2),
                       decoration: BoxDecoration(
                         color: state.index == e
                             ? lightBlueShade
@@ -57,7 +57,7 @@ class BoardingPage extends StatelessWidget {
             );
           },
         ),
-        SizedBox(
+        const SizedBox(
           height: 60,
         ),
         Expanded(
@@ -67,7 +67,7 @@ class BoardingPage extends StatelessWidget {
             Container(
               height: size.height / 2.5,
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
+                  borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(200),
                     topRight: Radius.circular(200),
                   ),
