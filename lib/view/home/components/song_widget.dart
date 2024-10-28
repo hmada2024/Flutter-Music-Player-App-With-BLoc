@@ -53,7 +53,7 @@ class SongWidget extends StatelessWidget {
             ],
           ),
         ),
-        const Spacer(),
+        Spacer(),
         GestureDetector(
           onTap: () {
             Utils.showBottomSheet(context: context,
@@ -89,8 +89,8 @@ class SongWidget extends StatelessWidget {
                               padding: 0,
                               icon: Center(child: SvgPicture.asset(AppSvg.play,width: 20,color: blueBackground,)),
                             ),
-                            const SizedBox(height: 10,),
-                            const Text('Play')
+                            SizedBox(height: 10,),
+                            Text('Play')
                           ],
                         ),
                       ),
@@ -108,8 +108,8 @@ class SongWidget extends StatelessWidget {
                               padding: 0,
                               icon: Center(child: Icon(Icons.favorite,color: blueBackground,)),
                             ),
-                            const SizedBox(height: 10,),
-                            const Text('Add')
+                            SizedBox(height: 10,),
+                            Text('Add')
                           ],
                         ),
                       ),
@@ -126,8 +126,8 @@ class SongWidget extends StatelessWidget {
                               padding: 0,
                               icon: Center(child: Icon(Icons.album,color: blueBackground,)),
                             ),
-                            const SizedBox(height: 10,),
-                            const Text('Album')
+                            SizedBox(height: 10,),
+                            Text('Album')
                           ],
                         ),
                       ),

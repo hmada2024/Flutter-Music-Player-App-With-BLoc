@@ -20,7 +20,7 @@ class SongsList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const SizedBox(
+        SizedBox(
           height: 20,
         ),
         Row(
@@ -33,12 +33,12 @@ class SongsList extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            const Spacer(),
+            Spacer(),
             InkWell(
               // onTap: () => ),
               onTap: () {
                 context.read<AlbumBloc>().add(GetFolderEvent());
-                Utils.go(context: context, screen: const AllMusicAlbum());
+                Utils.go(context: context, screen: AllMusicAlbum());
               },
               child: const Text(
                 'See all',
@@ -91,7 +91,7 @@ class SongsList extends StatelessWidget {
                         boxShadow: [
                           BoxShadow(
                               color: shadowColor,
-                              offset: const Offset(8, 6),
+                              offset: Offset(8, 6),
                               blurRadius: 12),
                           const BoxShadow(
                               color: Colors.white,

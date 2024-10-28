@@ -10,11 +10,11 @@ import '../../utils/utils.dart';
 
 class AudioFileQueries{
   static List<AudioFile> favourite=[];
-  static Future<List<AudioFile>> getFiles(String path) async {
+  static Future<List<AudioFile>> getFiles(String _path) async {
     List<AudioFile> audioList = [];
     final isPermissionGranted = await Utils.requestPermission();
     if (isPermissionGranted) {
-      Directory directory = Directory(path);
+      Directory directory = Directory(_path);
       List<FileSystemEntity> files = directory.listSync();
       List<String> audioExtensions = ['.mp3', '.wav', '.au', '.aac', '.smi', '.flac', '.ogg', '.m4a', '.wma'];
       for (int i = 0; i < files.length; i++) {

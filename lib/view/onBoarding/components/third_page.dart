@@ -7,7 +7,7 @@ class ThirdPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  const BoardingPage(
+    return  BoardingPage(
         text: 'Let\'s vibe togather!Create your\nown playlist and enjoy music',
         title: 'Customize Your Beast');
   }

@@ -18,7 +18,7 @@ class HomeFolderList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const SizedBox(height: 20,),
+        SizedBox(height: 20,),
         Row(
           children: [
             const Text(
@@ -29,11 +29,11 @@ class HomeFolderList extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            const Spacer(),
+            Spacer(),
             InkWell(
               onTap: () {
                 context.read<AlbumBloc>().add(GetFolderEvent());
-                Utils.go(context: context, screen: const AllMusicAlbum());
+                Utils.go(context: context, screen: AllMusicAlbum());
               },
               child: const Text(
                 'See all',
@@ -72,7 +72,7 @@ class HomeFolderList extends StatelessWidget {
                     },
                     child: Container(
                       alignment: Alignment.center,
-                      padding: const EdgeInsets.symmetric(
+                      padding: EdgeInsets.symmetric(
                           horizontal: 10, vertical: 5),
                       decoration: BoxDecoration(
                         color: backgroundColor,
@@ -81,9 +81,9 @@ class HomeFolderList extends StatelessWidget {
                         boxShadow: [
                           BoxShadow(
                               color: shadowColor,
-                              offset: const Offset(8, 6),
+                              offset: Offset(8, 6),
                               blurRadius: 12),
-                          const BoxShadow(
+                          BoxShadow(
                               color: Colors.white,
                               offset: Offset(-8, -6),
                               blurRadius: 12),

@@ -24,10 +24,10 @@ class CircularSoftButton extends StatelessWidget {
               borderRadius: BorderRadius.circular(circularRadius??radius!),
               boxShadow: [
                 BoxShadow(
-                    color: shadowColor, offset: const Offset(8, 6), blurRadius: 12),
+                    color: shadowColor, offset: Offset(8, 6), blurRadius: 12),
                 BoxShadow(
                     color: lightColor,
-                    offset: const Offset(-8, -6),
+                    offset: Offset(-8, -6),
                     blurRadius: 12),
               ],
             ),

@@ -81,7 +81,7 @@ class FilesLoading extends StatelessWidget {
                       ],
                     ),
                   ),
-                  const Spacer(),
+                  Spacer(),
                   RotatedBox(
                       quarterTurns: 1,
                       child: SvgPicture.asset(
